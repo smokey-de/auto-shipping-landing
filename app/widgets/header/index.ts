@@ -1,1 +1,1 @@
-export { Content as ContentHeader } from "./ui/Content";
+export { Content as ContentHeader } from "./Content";

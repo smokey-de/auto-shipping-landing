@@ -1,5 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
 import { ContentHeader } from "@/widgets/header";
+import { RateByTrustPeople } from "@/widgets/rate";
+import { AboutShip } from "@/widgets/aboutShip";
+import { WhyChoose } from "@/widgets/whyChoose";
 
 export const meta: MetaFunction = () => {
   return [
@@ -18,6 +21,9 @@ export default function Index() {
   return (
     <div>
       <ContentHeader />
+      <RateByTrustPeople />
+      <AboutShip />
+      <WhyChoose />
     </div>
   );
 }
