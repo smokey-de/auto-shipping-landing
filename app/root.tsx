@@ -5,14 +5,20 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import { MantineProvider } from "@mantine/core";
+
+import "@mantine/core/styles.css";
 
 import "./tailwind.css";
 
-export const links: () => [{ rel: string; href: string }, { rel: string; crossOrigin: string; href: string }, {
-  rel: string;
-  href: string
-}] = () => [
+export const links: () => [
+  { rel: string; href: string },
+  { rel: string; crossOrigin: string; href: string },
+  {
+    rel: string;
+    href: string;
+  }
+] = () => [
   // { rel: "preconnect", href: "https://fonts.googleapis.com" },
   // {
   //   rel: "preconnect",
@@ -35,7 +41,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <MantineProvider>{children}</MantineProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
