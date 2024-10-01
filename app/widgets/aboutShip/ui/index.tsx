@@ -1,4 +1,6 @@
 import classes from "./index.module.scss";
+import { useRef } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const aboutShip = [
   {
@@ -16,9 +18,25 @@ const aboutShip = [
 ];
 
 export const AboutShip = () => {
+  const ref = useRef<HTMLDivElement>(null as HTMLDivElement);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "1.33 1"],
+  });
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
   return (
     <section className={classes.aboutShipWrapper}>
-      <div className={"container"}>
+      <motion.div
+        className={"container"}
+        ref={ref}
+        style={{
+          scale: scaleProgress,
+          opacity: opacityProgress,
+        }}
+      >
         <h2 className={classes.aboutShipTitle}>
           Ship your vehicle in 3 easy steps
         </h2>
@@ -33,7 +51,7 @@ export const AboutShip = () => {
             <p className={classes.aboutShipItemText}>{item.text}</p>
           </div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

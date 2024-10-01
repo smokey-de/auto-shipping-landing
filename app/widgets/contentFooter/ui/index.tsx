@@ -1,5 +1,4 @@
 import { useMediaQuery } from "@mantine/hooks";
-import clsx from "clsx";
 
 import logo from "@/shared/assets/logo.png";
 import {
@@ -11,13 +10,29 @@ import {
 
 import classes from "./index.module.scss";
 import { Button, Flex, Input } from "@mantine/core";
+import { useRef } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 export const ContentFooter = () => {
   const matches = useMediaQuery("(min-width: 1044px)");
+  const ref = useRef<HTMLDivElement>(null as HTMLDivElement);
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "1.33 1"],
+  });
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
   return (
     <footer className={classes.contentFooterWrapper}>
-      <div className={"container"}>
+      <motion.div
+        className={"container"}
+        ref={ref}
+        style={{
+          scale: scaleProgress,
+          opacity: opacityProgress,
+        }}
+      >
         <div
           className={classes.footerTop}
           style={{
@@ -168,7 +183,7 @@ export const ContentFooter = () => {
             </span>
           </div>
         </Flex>
-      </div>
+      </motion.div>
     </footer>
   );
 };

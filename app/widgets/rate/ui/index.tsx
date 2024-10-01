@@ -6,7 +6,8 @@ import { StarSvg } from "@/shared/helpers/svg";
 import classes from "./index.module.scss";
 import { useMediaQuery } from "@mantine/hooks";
 import { Flex } from "@mantine/core";
-import { BlurFade } from "@/shared/ui";
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useRef } from "react";
 
 const satisfiedCustomer = [
   {
@@ -41,20 +42,48 @@ const trustedCustomer = [
   },
 ];
 
-const BLUR_FADE_DELAY = 0.04;
-
 export const RateByTrustPeople = () => {
   const matches = useMediaQuery("(min-width: 1044px)");
+  const ref = useRef<HTMLDivElement>(null as HTMLDivElement);
+  const secondRef = useRef<HTMLDivElement>(null as HTMLDivElement);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "1.33 1"],
+  });
+
+  const { scrollYProgress: secondScrollYProgress } = useScroll({
+    target: secondRef,
+    offset: ["0 1", "1.33 1"],
+  });
+
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
+  const secondScaleProgress = useTransform(
+    secondScrollYProgress,
+    [0, 1],
+    [0.8, 1]
+  );
+  const secondOpacityProgress = useTransform(
+    secondScrollYProgress,
+    [0, 1],
+    [0.6, 1]
+  );
 
   return (
     <>
       <section className={classes.satisfiedCustomer}>
-        <div className={"container"}>
-          <BlurFade delay={BLUR_FADE_DELAY}>
-            <h2 className={classes.satisfiedCustomerTitle}>
-              Over +500 satisfied customers and counting!
-            </h2>
-          </BlurFade>
+        <motion.div
+          ref={ref}
+          style={{
+            scale: scaleProgress,
+            opacity: opacityProgress,
+          }}
+          className={"container"}
+        >
+          <h2 className={classes.satisfiedCustomerTitle}>
+            Over +500 satisfied customers and counting!
+          </h2>
           <Flex
             gap={"1rem"}
             direction={
@@ -64,33 +93,38 @@ export const RateByTrustPeople = () => {
             }
           >
             {satisfiedCustomer.map((item, index) => (
-              <BlurFade delay={BLUR_FADE_DELAY * 2 + index * 0.05} key={index}>
-                <div className={classes.reviewCard}>
-                  <div className={classes.reviewCardTitle}>
-                    <h3>{item.name}</h3>
-                    <p className="flex">
-                      <StarSvg />
-                      <StarSvg />
-                      <StarSvg />
-                      <StarSvg />
-                      <StarSvg />
-                    </p>
-                  </div>
-                  <p className={classes.reviewCardText}>{item.text}</p>
-                  <div className={classes.reviewCardBottom}>
-                    <span className={classes.reviewCardBottomDate}>
-                      {item.date}
-                    </span>
-                    <img src={googleImg as string} alt="Google" />
-                  </div>
+              <div className={classes.reviewCard} key={index}>
+                <div className={classes.reviewCardTitle}>
+                  <h3>{item.name}</h3>
+                  <p className="flex">
+                    <StarSvg />
+                    <StarSvg />
+                    <StarSvg />
+                    <StarSvg />
+                    <StarSvg />
+                  </p>
                 </div>
-              </BlurFade>
+                <p className={classes.reviewCardText}>{item.text}</p>
+                <div className={classes.reviewCardBottom}>
+                  <span className={classes.reviewCardBottomDate}>
+                    {item.date}
+                  </span>
+                  <img src={googleImg as string} alt="Google" />
+                </div>
+              </div>
             ))}
           </Flex>
-        </div>
+        </motion.div>
       </section>
       <section className={classes.trustedCustomer}>
-        <div className={"container"}>
+        <motion.div
+          className={"container"}
+          ref={secondRef}
+          style={{
+            scale: secondScaleProgress,
+            opacity: secondOpacityProgress,
+          }}
+        >
           <h2 className={classes.trustedCustomerTitle}>
             Trusted and rated by people
           </h2>
@@ -125,7 +159,7 @@ export const RateByTrustPeople = () => {
               </a>
             ))}
           </Flex>
-        </div>
+        </motion.div>
       </section>
     </>
   );
