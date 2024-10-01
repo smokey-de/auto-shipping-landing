@@ -3,6 +3,7 @@ import { ContentHeader } from "@/widgets/header";
 import { RateByTrustPeople } from "@/widgets/rate";
 import { AboutShip } from "@/widgets/aboutShip";
 import { WhyChoose } from "@/widgets/whyChoose";
+import { ContentFooter } from "@/widgets/contentFooter";
 
 export const meta: MetaFunction = () => {
   return [
@@ -19,11 +20,12 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div>
+    <>
       <ContentHeader />
       <RateByTrustPeople />
       <AboutShip />
       <WhyChoose />
-    </div>
+      <ContentFooter />
+    </>
   );
 }
