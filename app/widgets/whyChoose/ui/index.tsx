@@ -8,8 +8,6 @@ import {
 } from "@/shared/helpers/svg";
 import { useMediaQuery } from "@mantine/hooks";
 import { Flex } from "@mantine/core";
-import { useRef } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
 
 const statistics = [
   {
@@ -47,25 +45,10 @@ const whyList = [
 
 export const WhyChoose = () => {
   const matches = useMediaQuery("(min-width: 1044px)");
-  const ref = useRef<HTMLDivElement>(null as HTMLDivElement);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0 1", "1.33 1"],
-  });
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   return (
     <section className={classes.whyChooseWrapper}>
-      <motion.div
-        className={"container"}
-        ref={ref}
-        style={{
-          scale: scaleProgress,
-          opacity: opacityProgress,
-        }}
-      >
+      <div className={"container"}>
         <h2 className={classes.whyChooseTitle}>
           Ship your vehicle in 3 easy steps
         </h2>
@@ -101,7 +84,7 @@ export const WhyChoose = () => {
             </li>
           ))}
         </ul>
-      </motion.div>
+      </div>
     </section>
   );
 };
