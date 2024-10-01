@@ -6,6 +6,7 @@ import { StarSvg } from "@/shared/helpers/svg";
 import classes from "./index.module.scss";
 import { useMediaQuery } from "@mantine/hooks";
 import { Flex } from "@mantine/core";
+import { BlurFade } from "@/shared/ui";
 
 const satisfiedCustomer = [
   {
@@ -40,6 +41,8 @@ const trustedCustomer = [
   },
 ];
 
+const BLUR_FADE_DELAY = 0.04;
+
 export const RateByTrustPeople = () => {
   const matches = useMediaQuery("(min-width: 1044px)");
 
@@ -47,9 +50,11 @@ export const RateByTrustPeople = () => {
     <>
       <section className={classes.satisfiedCustomer}>
         <div className={"container"}>
-          <h2 className={classes.satisfiedCustomerTitle}>
-            Over +500 satisfied customers and counting!
-          </h2>
+          <BlurFade delay={BLUR_FADE_DELAY}>
+            <h2 className={classes.satisfiedCustomerTitle}>
+              Over +500 satisfied customers and counting!
+            </h2>
+          </BlurFade>
           <Flex
             gap={"1rem"}
             direction={
@@ -59,25 +64,27 @@ export const RateByTrustPeople = () => {
             }
           >
             {satisfiedCustomer.map((item, index) => (
-              <div className={classes.reviewCard} key={index}>
-                <div className={classes.reviewCardTitle}>
-                  <h3>{item.name}</h3>
-                  <p className="flex">
-                    <StarSvg />
-                    <StarSvg />
-                    <StarSvg />
-                    <StarSvg />
-                    <StarSvg />
-                  </p>
+              <BlurFade delay={BLUR_FADE_DELAY * 2 + index * 0.05} key={index}>
+                <div className={classes.reviewCard}>
+                  <div className={classes.reviewCardTitle}>
+                    <h3>{item.name}</h3>
+                    <p className="flex">
+                      <StarSvg />
+                      <StarSvg />
+                      <StarSvg />
+                      <StarSvg />
+                      <StarSvg />
+                    </p>
+                  </div>
+                  <p className={classes.reviewCardText}>{item.text}</p>
+                  <div className={classes.reviewCardBottom}>
+                    <span className={classes.reviewCardBottomDate}>
+                      {item.date}
+                    </span>
+                    <img src={googleImg as string} alt="Google" />
+                  </div>
                 </div>
-                <p className={classes.reviewCardText}>{item.text}</p>
-                <div className={classes.reviewCardBottom}>
-                  <span className={classes.reviewCardBottomDate}>
-                    {item.date}
-                  </span>
-                  <img src={googleImg as string} alt="Google" />
-                </div>
-              </div>
+              </BlurFade>
             ))}
           </Flex>
         </div>

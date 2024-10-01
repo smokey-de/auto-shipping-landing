@@ -9,8 +9,18 @@
     font-size: 24px;
     font-weight: 700;
     line-height: 130%;
+
+    @media (max-width: 1044px) {
+      line-height: 1;
+      font-size: 20px;
+    }
     & a {
       color: #ff7b54;
+
+      @media (max-width: 1044px) {
+        padding-top: 5px;
+        font-size: 16px;
+      }
     }
   }
 
@@ -27,7 +37,6 @@
   }
 
   .formBtn{
-    margin-top: 1rem;
     background-color: #ff7b54;
     transition: all .3s ease-in-out;
     padding: 0 24px;

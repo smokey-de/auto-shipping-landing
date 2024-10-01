@@ -1,13 +1,16 @@
-import logo from "@/shared/assets/logo.png";
+import { useMediaQuery } from "@mantine/hooks";
+import clsx from "clsx";
 
-import classes from "./index.module.scss";
+import logo from "@/shared/assets/logo.png";
 import {
   EmailSvg,
   FacebookSvg,
   FooterPhoneSvg,
   InstagramSvg,
 } from "@/shared/helpers/svg";
-import { useMediaQuery } from "@mantine/hooks";
+
+import classes from "./index.module.scss";
+import { Button, Flex, Input } from "@mantine/core";
 
 export const ContentFooter = () => {
   const matches = useMediaQuery("(min-width: 1044px)");
@@ -38,7 +41,16 @@ export const ContentFooter = () => {
               vehicles, motorcycles, and heavy equipment to and from all fifty
               states as well as international.
             </p>
-            <div className="flex justify-around">
+
+            <Flex
+              justify={"space-around"}
+              direction={
+                matches
+                  ? "row"
+                  : ("column" as React.CSSProperties["flexDirection"])
+              }
+              gap={"1rem"}
+            >
               <div className="flex items-center gap-1">
                 <span>
                   <FooterPhoneSvg />
@@ -74,7 +86,7 @@ export const ContentFooter = () => {
                   </h3>
                 </div>
               </a>
-            </div>
+            </Flex>
           </div>
           <div className={"flex"}>
             <div
@@ -103,10 +115,29 @@ export const ContentFooter = () => {
                 </span>
               </div>
             </div>
-            <div className={classes.footerTopRight}></div>
+            <div className={classes.footerTopRight}>
+              <h5 className="text-white font-bold">Get $50 Discount</h5>
+              <span className="text-xs text-gray-500 leading-none">
+                Wait! Did you forget your bonus?
+              </span>
+              <div className={"mt-2 mb-3"}>
+                <Input size="lg" radius="md" placeholder="Your email" />
+              </div>
+              <Button variant="filled" radius="md">
+                Submit
+              </Button>
+            </div>
           </div>
         </div>
-        <div className="flex justify-between items-center mt-1">
+        <Flex
+          justify={"space-between"}
+          direction={
+            matches ? "row" : ("column" as React.CSSProperties["flexDirection"])
+          }
+          gap={"1rem"}
+          align={"center"}
+          mt={"1"}
+        >
           <ul className={classes.socialNetworks}>
             <li>
               <a
@@ -136,7 +167,7 @@ export const ContentFooter = () => {
               © 2024 Unique Auto Shipping. All rights reserved.
             </span>
           </div>
-        </div>
+        </Flex>
       </div>
     </footer>
   );

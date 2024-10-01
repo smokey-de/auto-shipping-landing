@@ -8,6 +8,11 @@
     font-weight: bold;
     line-height: 140%;
     margin-bottom: 2rem;
+
+    @media (max-width: 1044px) {
+      line-height: 1;
+      font-size: 30px;
+    }
   }
 
     .reviewCard {
@@ -63,6 +68,10 @@
     font-weight: bold;
     line-height: 140%;
     margin-bottom: 2rem;
+    @media (max-width: 1044px) {
+      line-height: 1;
+      font-size: 30px;
+    }
   }
 
   .trustedCustomerCard{
@@ -79,6 +88,11 @@
       font-size: 32px;
       color: #000;
       font-weight: bold;
+
+      @media (max-width: 1044px) {
+        line-height: 1;
+        font-size: 28px;
+      }
     }
   }
 }
