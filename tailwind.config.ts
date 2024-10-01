@@ -16,6 +16,15 @@ export default {
           '"Noto Color Emoji"',
         ],
       },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "2rem",
+          sm: "2rem",
+          lg: "4rem",
+          xl: "10rem",
+        },
+      }
     },
   },
   plugins: [],
