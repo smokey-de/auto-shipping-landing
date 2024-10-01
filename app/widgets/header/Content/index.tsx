@@ -34,9 +34,11 @@ export const Content = () => {
                   Shipping vehicles is easy and affordable with Unique
                   Autoshipping LLC !
                 </p>
-                <a
-                  href={"tel: +1(917) 627-5498"}
-                  className={clsx([classes.contentBottomWrapper, "flex gap-2"])}
+                <div
+                  className={clsx([
+                    classes.contentBottomWrapper,
+                    "flex gap-2 items-center",
+                  ])}
                 >
                   <span className={classes.contentBottomIcon}>
                     <PhoneSvg />
@@ -45,11 +47,18 @@ export const Content = () => {
                     <p className={classes.contentBottomText}>
                       Call us for a custom car shipping quote
                     </p>
-                    <h3 className={classes.contentBottomPhoneText}>
-                      (917) 627-5498
-                    </h3>
+                    <a href={"tel: +1(917) 627-5498"}>
+                      <h3 className={classes.contentBottomPhoneText}>
+                        (917) 627-5498
+                      </h3>
+                    </a>
+                    <a href={"tel: +1(865) 776-9121"}>
+                      <h3 className={classes.contentBottomPhoneText}>
+                        (865) 776-9121
+                      </h3>
+                    </a>
                   </div>
-                </a>
+                </div>
               </div>
             )}
             <div style={{ width: matches ? "50%" : "100%" }}>
