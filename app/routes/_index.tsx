@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div className='container mx-auto'>
-      test www
+      test www22
     </div>
   );
 }
