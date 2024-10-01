@@ -9,7 +9,8 @@ import {
 } from "@/shared/helpers/svg";
 
 import classes from "./index.module.scss";
-import { Button, Flex, Input } from "@mantine/core";
+import { Flex } from "@mantine/core";
+import { FooterGetBonusForm } from "@/features/footerGetBonusForm";
 
 export const ContentFooter = () => {
   const matches = useMediaQuery("(min-width: 1044px)");
@@ -118,12 +119,7 @@ export const ContentFooter = () => {
               <span className="text-xs text-gray-500 leading-none">
                 Wait! Did you forget your bonus?
               </span>
-              <div className={"mt-2 mb-3"}>
-                <Input size="lg" radius="md" placeholder="Your email" />
-              </div>
-              <Button variant="filled" radius="md">
-                Submit
-              </Button>
+              <FooterGetBonusForm />
             </div>
           </div>
         </div>
@@ -148,7 +144,7 @@ export const ContentFooter = () => {
             </li>
             <li>
               <a
-                href="https://www.facebook.com/profile.php?id=61552821236272"
+                href="https://www.facebook.com/profile.php?id=61566522425599&mibextid=LQQJ4d"
                 target="_blank"
                 rel="noreferrer"
               >

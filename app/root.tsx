@@ -8,8 +8,9 @@ import {
 import { MantineProvider } from "@mantine/core";
 
 import "@mantine/core/styles.css";
-
+import "@mantine/notifications/styles.css";
 import "./tailwind.css";
+import { Notifications } from "@mantine/notifications";
 
 export const links: () => [
   { rel: string; href: string },
@@ -41,7 +42,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <Notifications />
+          {children}
+        </MantineProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
