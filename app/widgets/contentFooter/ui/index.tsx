@@ -139,7 +139,7 @@ export const ContentFooter = () => {
           <ul className={classes.socialNetworks}>
             <li>
               <a
-                href="https://instagram.com/unique_autoshipping?igshid=MXhsd2d1eWJpc2l2eQ=="
+                href="https://www.instagram.com/unique_autoshipping_llc?igsh=MTgxc3ZxZjQ5YzQ3aw%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noreferrer"
               >

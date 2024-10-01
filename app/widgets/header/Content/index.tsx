@@ -9,7 +9,7 @@ import { PhoneSvg } from "@/shared/helpers/svg";
 import { HeaderContentForm } from "@/features/headerContentForm";
 import { useMediaQuery } from "@mantine/hooks";
 
-const BLUR_FADE_DELAY = 0.04;
+const BLUR_FADE_DELAY = 0.06;
 
 export const Content = () => {
   const matches = useMediaQuery("(min-width: 1044px)");
