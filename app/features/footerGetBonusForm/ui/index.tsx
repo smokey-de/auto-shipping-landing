@@ -16,7 +16,7 @@ export const FooterGetBonusForm = () => {
   });
 
   const handleSubmit = (values: { from_email: string }) => {
-    sendEmail({ template_id: BONUS_TEMPLATE_ID, values }, (type) => {
+    sendEmail({ template_id: BONUS_TEMPLATE_ID, ...values }, (type) => {
       if (type === "success") form.reset();
     });
   };
