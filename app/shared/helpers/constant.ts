@@ -1,4 +1,4 @@
-const SERVICE_ID = "service_9ln609k";
+const SERVICE_ID = "service_369t5as";
 const MAIN_TEMPLATE_ID = "template_5q7gwlc";
 export const BONUS_TEMPLATE_ID = "template_zuajl4j";
 const PUBLIC_ID = "X-N16IA5aGYbDHscC";
