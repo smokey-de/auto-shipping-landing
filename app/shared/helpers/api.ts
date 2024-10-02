@@ -1,4 +1,4 @@
-import { emailSchema } from "@/shared/helpers/constant";
+import { emailSchema, TO_GMAIL, TO_NAME } from "@/shared/helpers/constant";
 import { notifications } from "@mantine/notifications";
 import { MantineColor } from "@mantine/core";
 
@@ -15,8 +15,8 @@ export const sendEmail = (payload: any, callback: (type?: string) => void) => {
         : emailSchema.template_id,
       template_params: {
         ...payload,
-        to_gmail: "abrorxon158@gmail.com",
-        to_name: "Abrorxon",
+        to_gmail: TO_GMAIL,
+        to_name: TO_NAME,
       },
     }),
   })
